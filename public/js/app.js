@@ -1,24 +1,38 @@
-$(document).ready(function(){
-	console.log('off to the races!');
-	var container = $('.container');
-	var numOfRows = 10;
-	var numOfCols = 10;
+$(document).ready(function() {
+    var container = $('.container');
+    var numOfRows = 10;
+    var numOfCols = 10;
 
 
 
 
-initGrid();
+    initGrid();
+    addClickHandlers();
 
-	function initGrid(){
-		for (var i = 0; i < numOfRows; i += 1) {
-			var row = $('<div></div>');
-			row.addClass('row');
-			for (var j = 0; j < numOfCols; j += 1){
-				var cell = $('<div></div>');
-				cell.addClass('cell border');
-				row.append(cell);
-			}
-			container.append(row);
-		}
-	}
+ function changeColor() {
+ 	console.log('Click!');
+ }
+
+function addClickHandlers() {
+    var cells = $('.cell');
+    for (var i = 0; i < cells.length; i +=1 ) {
+    	var _cell = cells[i];
+    	$(_cell).on('click', changeColor);
+    }
+
+    }
+
+    function initGrid() {
+        for (var i = 0; i < numOfRows; i += 1) {
+            var row = $('<div></div>');
+            row.addClass('row');
+            for (var j = 0; j < numOfCols; j += 1) {
+                var cell = $('<div></div>');
+                cell.addClass('cell border');
+                row.append(cell);
+            }
+            container.append(row);
+        }
+    }
+
 });
