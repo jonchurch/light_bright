@@ -9,15 +9,21 @@ $(document).ready(function() {
     initGrid();
     addClickHandlers();
 
+
  function changeColor() {
- 	console.log('Click!');
+
+ 	var colorClasses = ['white', 'red', 'green', 'blue'];
+ 	var colorCycle = Math.round(Math.random() * (colorClasses.length-1));
+ 	var color = colorClasses[colorCycle];
+ 	$(this).removeClass(colorClasses.join(' '));
+ 	$(this).addClass(color);
  }
 
 function addClickHandlers() {
     var cells = $('.cell');
     for (var i = 0; i < cells.length; i +=1 ) {
     	var _cell = cells[i];
-    	$(_cell).on('click', changeColor);
+    	$(_cell).on('mouseenter', changeColor);
     }
 
     }
